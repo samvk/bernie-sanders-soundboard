@@ -19,7 +19,7 @@ app.intent(['talk', 'Default Fallback Intent'], (conv) => {
     }));
     conv.ask(playAnotherPhrase(region));
     conv.ask(new Suggestions([yesPhrase(region), noPhrase(region)]));
-    conv.ask(new LinkOutSuggestion({ name: '❤️ Donate Now!', url: 'https://secure.actblue.com/donate/bern-site?refcode=samvk' }));
+    conv.ask(new LinkOutSuggestion({ name: '❤️ Donate Now!', url: 'https://secure.actblue.com/donate/samvk-for-sanders?refcode=bernie-sanders-soundboard' }));
 });
 
 app.intent(['no', 'actions_intent_CANCEL', 'actions_intent_NO_INPUT'], (conv) => {
