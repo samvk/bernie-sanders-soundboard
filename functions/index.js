@@ -1,6 +1,6 @@
 const { dialogflow, SimpleResponse, Suggestions, LinkOutSuggestion } = require('actions-on-google');
 const functions = require('firebase-functions');
-const { randomNumberFromRange } = require('./util');
+const { randomNumberFromRange, randomPop } = require('./util');
 const { playAnotherPhrase, yesPhrase, noPhrase } = require('./translation');
 
 const CLIP_TOTAL_COUNT = 18;
@@ -19,7 +19,12 @@ app.intent(['talk', 'Default Fallback Intent'], (conv) => {
     }));
     conv.ask(playAnotherPhrase(region));
     conv.ask(new Suggestions([yesPhrase(region), noPhrase(region)]));
-    conv.ask(new LinkOutSuggestion({ name: '❤️ Donate Now!', url: 'https://secure.actblue.com/donate/samvk-for-sanders?refcode=bernie-sanders-soundboard' }));
+    // Actions on Google does not support donation links yet (https://developers.google.com/assistant/console/policies/general-policies#transactions)
+    // conv.ask(new LinkOutSuggestion({ name: '❤️ Donate Now!', url: 'https://secure.actblue.com/donate/samvk-for-sanders?refcode=bernie-sanders-soundboard' }));
+    conv.ask(new LinkOutSuggestion({
+        name: randomPop(['💕 Join the movement', '🇺🇸 Join the movement', '❤️ Support!', '🔥 Feel The Bern!']),
+        url: 'https://berniesanders.com',
+    }));
 });
 
 app.intent(['no', 'actions_intent_CANCEL', 'actions_intent_NO_INPUT'], (conv) => {
