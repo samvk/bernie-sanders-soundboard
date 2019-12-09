@@ -22,7 +22,7 @@ app.intent(['talk', 'Default Fallback Intent'], (conv) => {
     // Actions on Google does not support donation links yet (https://developers.google.com/assistant/console/policies/general-policies#transactions)
     // conv.ask(new LinkOutSuggestion({ name: '❤️ Donate Now!', url: 'https://secure.actblue.com/donate/samvk-for-sanders?refcode=bernie-sanders-soundboard' }));
     conv.ask(new LinkOutSuggestion({
-        name: randomPop(['💕 Join the movement', '🇺🇸 Join the movement', '❤️ Support!', '🔥 Feel The Bern!']),
+        name: randomPop(['❤️ Learn more', '🇺🇸 Learn more', '🔥 Learn more']),
         url: 'https://berniesanders.com',
     }));
 });
